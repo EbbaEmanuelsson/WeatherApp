@@ -20,9 +20,12 @@
   max-width: 700px;
 }
 
-h1 {
+h1, h2 {
   font-size: 24px;
+  font-weight: bold;
 }
+
+
 
 p {
   line-height: normal;

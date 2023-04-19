@@ -16,13 +16,14 @@
       integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
       <div class="weather-app">
         <div class="row">
-          <div class="col-4">
+            <div class="col-1"></div>
+          <div class="col-3">
               <h1></h1>
           </div>
           <div class="col-8">
@@ -32,10 +33,8 @@
           <div class="col-4">
             <button type="button" class="btn btn-light">📍</button>
           </div>
-          <div class="col-4">
-              
-          </div>
-          <div class="col-4">
+          <div class="col-2"></div>
+          <div class="col-6">
             <form id="search-form">
                   <input 
                   type="text"
@@ -229,10 +228,14 @@
             <button type="button" class="btn btn-light">»</button>
           </div>
         </div>
-      </div>
+      </div>   
     </div>
-    <script src="script.js">
-      
+    <footer>
+        <p class="foot-note">
+            Coded by Ebba Emanuelsson and is <a href="https://github.com/EbbaEmanuelsson/WeatherApp">open-sourced on GitHub</a>
+        </p>
+    </footer>
+    <script src="script.js">   
     </script>
   </body>
 </html>

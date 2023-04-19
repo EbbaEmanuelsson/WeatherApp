@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherApp</title>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9a34ff2858.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-app">
+        <div class="row">
+          <div class="col-4">
+              <h1></h1>
+          </div>
+          <div class="col-8">
+            <h2></h2>
+          </div>
+        <div class="row">
+          <div class="col-3">
+            <button type="button" class="btn btn-light">📍</button>
+          </div>
+          <div class="col-6">
+              <form id="search-form">
+                  <input 
+                  type="text"
+                  placeholder="Search for a city"
+                  autocomplete="off"
+                  id="search-text-input"
+                  />
+          </div>
+          <div class="col-3">
+              <input type="submit" value="Search">
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            Day
+          </div>
+          <div class="col-4">
+            Weather
+          </div>
+          <div class="col-1">
+            L
+          </div>
+          <div class="col-1">
+            H ℃
+          </div>
+        </div>
+        <div class="row menu">
+          <div class="col-4">
+            <p>
+              <strong>
+                Today
+              </strong>
+              <br />
+              20 march
+            </p>
+          </div>
+          <div class="col-4">
+            🌥️
+          </div>
+          <div class="col-1">
+            2°
+          </div>
+          <div class="col-1">
+            9°
+          </div>
+          <div class="col-1"></div>
+          <div class="col-1">
+            <button type="button" class="btn btn-light">»</button>
+          </div>
+        </div>
+        <div class="row menu">
+          <div class="col-4">
+            <p>
+              <strong>
+                Tuesday
+              </strong>
+              <br />
+              21 march
+            </p>
+          </div>
+          <div class="col-4">
+            🌧️
+          </div>
+          <div class="col-1">
+            1°
+          </div>
+          <div class="col-1">
+            5°
+          </div>
+          <div class="col-1"></div>
+          <div class="col-1">
+            <button type="button" class="btn btn-light">»</button>
+          </div>
+        </div>
+        <div class="row menu">
+          <div class="col-4">
+            <p>
+              <strong>
+                Wednesday
+              </strong>
+              <br />
+              22 march
+            </p>
+          </div>
+          <div class="col-4">
+            🌧️
+          </div>
+          <div class="col-1">
+            5°
+          </div>
+          <div class="col-1">
+            6°
+          </div>
+          <div class="col-1"></div>
+          <div class="col-1">
+            <button type="button" class="btn btn-light">»</button>
+          </div>
+        </div>
+        <div class="row menu">
+          <div class="col-4">
+            <p>
+              <strong>
+                Thursday
+              </strong>
+              <br />
+              23 march
+            </p>
+          </div>
+          <div class="col-4">
+            🌧️
+          </div>
+          <div class="col-1">
+            3°
+          </div>
+          <div class="col-1">
+            6°
+          </div>
+          <div class="col-1"></div>
+          <div class="col-1">
+            <button type="button" class="btn btn-light">»</button>
+          </div>
+        </div>
+        <div class="row menu">
+          <div class="col-4">
+            <p>
+              <strong>
+                Friday
+              </strong>
+              <br />
+              24 march
+            </p>
+          </div>
+          <div class="col-4">
+            🌧️
+          </div>
+          <div class="col-1">
+            3°
+          </div>
+          <div class="col-1">
+            5°
+          </div>
+          <div class="col-1"></div>
+          <div class="col-1">
+            <button type="button" class="btn btn-light">»</button>
+          </div>
+        </div>
+        <div class="row menu">
+          <div class="col-4">
+            <p>
+              <strong>
+                Saturday
+              </strong>
+              <br />
+              25 march
+            </p>
+          </div>
+          <div class="col-4">
+            ☁️
+          </div>
+          <div class="col-1">
+            2°
+          </div>
+          <div class="col-1">
+            4°
+          </div>
+          <div class="col-1"></div>
+          <div class="col-1">
+            <button type="button" class="btn btn-light">»</button>
+          </div>
+        </div>
+        <div class="row menu">
+          <div class="col-4">
+            <p>
+              <strong>
+                Sunday
+              </strong>
+              <br />
+              26 march
+            </p>
+          </div>
+          <div class="col-4">
+            🌥️
+          </div>
+          <div class="col-1">
+            1°
+          </div>
+          <div class="col-1">
+            4°
+          </div>
+          <div class="col-1"></div>
+          <div class="col-1">
+            <button type="button" class="btn btn-light">»</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js">
+      
+    </script>
+  </body>
+</html>

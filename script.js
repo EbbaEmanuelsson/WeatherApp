@@ -1,6 +1,7 @@
 let now = new Date();
 
-let h1 = document.querySelector("h1");
+let showDay = document.querySelector("#day");
+let showTime = document.querySelector("#time");
 
 let date = now.getDate();
 let hours = now.getHours();
@@ -12,17 +13,18 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let day = days[now.getDay()];
 
-h1.innerHTML = `${day}, ${hours}:${minutes}`;
+showDay.innerHTML = `${day}`;
+showTime.innerHTML = `${hours}:${minutes}`;
 
 function showWeather(response) {
-  let h2 = document.querySelector("h2");
+  let h1 = document.querySelector("h1");
   let city = response.data.name;
   let temperature = Math.round(response.data.main.temp);
   let description = response.data.weather[0].main;
-  h2.innerHTML = `${temperature}°C and ${description} in ${city}`;
+  h1.innerHTML = `${city}, ${temperature}°C and ${description}`;
 }
 
 function getCity(city) {

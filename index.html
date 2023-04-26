@@ -23,11 +23,8 @@
       <div class="weather-app">
         <div class="row">
             <div class="col-1"></div>
-          <div class="col-3">
+          <div class="col-12">
               <h1></h1>
-          </div>
-          <div class="col-8">
-            <h2></h2>
           </div>
         <div class="row">
           <div class="col-4">
@@ -42,8 +39,9 @@
                   placeholder="Search for a city"
                   autocomplete="off"
                   id="search-text-input"
+                  class="form-control" 
                   />
-                  <input type="submit" value="Search">
+                  <input type="submit" value="Search" class="btn btn-primary">
                 </form>
             </div>
           </div>
@@ -67,16 +65,12 @@
         <div class="row menu">
           <div class="col-3">
             <p>
-              <strong id="day">
-                Today
-              </strong>
+              <strong id="day"></strong>
               <br />
-              <small id="time">
-              20 march
-              </small>
+              <small id="time"></small>
             </p>
           </div>
-          <div class="col-3">
+          <div class="col-3" id="icon">
             🌥️
           </div>
           <div class="col-2">
@@ -100,7 +94,7 @@
               21 march
             </p>
           </div>
-          <div class="col-3">
+          <div class="col-3" id="">
             🌧️
           </div>
           <div class="col-2">

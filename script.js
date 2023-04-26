@@ -20,11 +20,22 @@ showDay.innerHTML = `${day}`;
 showTime.innerHTML = `${hours}:${minutes}`;
 
 function showWeather(response) {
+  console.log(response);
   let h1 = document.querySelector("h1");
   let city = response.data.name;
   let temperature = Math.round(response.data.main.temp);
   let description = response.data.weather[0].main;
-  h1.innerHTML = `${city}, ${temperature}°C and ${description}`;
+  let iconElement = document.querySelector("#icon");
+  let wind = document.querySelector("#wind");
+  let windSpeed = Math.round(response.data.wind.speed);
+  let showTemperature = document.querySelector("#temperature");
+
+
+  h1.innerHTML = `${city}, ${description}`;
+  iconElement.setAttribute(
+    "src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  wind.innerHTML = `${windSpeed} km/h`;
+  showTemperature.innerHTML = `${temperature}°C`;
 }
 
 function getCity(city) {
@@ -38,9 +49,6 @@ function search(event) {
   let city = document.querySelector("#search-text-input").value;
   getCity(city);
 }
-
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", search);
 
 function getPosition(position) {
   let apiKey = "ad85da160c6f3ba80a4c59c524b772ee";
@@ -57,3 +65,9 @@ function locationHere(event) {
 
 let button = document.querySelector("button");
 button.addEventListener("click", locationHere);
+
+
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", search);
+

@@ -62,6 +62,7 @@ function showTempCelsius(event){
   showTemperature.innerHTML = Math.round(celsiusTemp);
 }
 
+getCity("Gothenburg");
 
 let now = new Date();
 

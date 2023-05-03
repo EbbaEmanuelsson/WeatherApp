@@ -1,3 +1,47 @@
+function showForecast(){
+  let showForecastMenu = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row menu">`;
+  let days = ["Thu", "fri", "sat"];
+  days.forEach(function(day){
+    forecastHTML = forecastHTML +
+      `
+          <div class="col-3">
+            <p>
+              <strong>
+                ${day}
+              </strong>
+              <br />
+              21 march
+            </p>
+          </div>
+          <div class="col-3" id="">
+            <img 
+            src="https//ssl.gstatic.com/onebox/weather/64/sunny.png" 
+            alt="light rain"   
+            />
+          </div>
+          <div class="col-2">
+            Wind
+          </div>
+          <div class="col-1">
+            1°
+          </div>
+          <div class="col-1">
+            5°
+          </div>
+          <div class="col-1"></div>
+          <div class="col-1">
+            <button type="button" class="btn btn-light">»</button>
+          </div>`;
+  });
+  
+  forecastHTML = forecastHTML + `</div>`;
+  showForecastMenu.innerHTML = forecastHTML;
+}
+
+
+
 function showWeather(response) {
   let h1 = document.querySelector("h1");
   let city = response.data.name;
@@ -8,7 +52,7 @@ function showWeather(response) {
   let windSpeed = Math.round(response.data.wind.speed);
   let showTemperature = document.querySelector("#temperature");
 
-  
+
   celsiusTemp = response.data.main.temp;
   
 
@@ -109,4 +153,5 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showTempCelsius);
 
 getCity("Gothenburg");
+showForecast();
 

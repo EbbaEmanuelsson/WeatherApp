@@ -62,7 +62,7 @@ function showTempCelsius(event){
   showTemperature.innerHTML = Math.round(celsiusTemp);
 }
 
-getCity("Gothenburg");
+
 
 let now = new Date();
 
@@ -107,4 +107,6 @@ fahrenheitLink.addEventListener("click", showTempFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showTempCelsius);
+
+getCity("Gothenburg");
 

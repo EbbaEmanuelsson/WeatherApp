@@ -1,10 +1,12 @@
 function showForecast(){
   let showForecastMenu = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class="row menu">`;
   let days = ["Thu", "fri", "sat"];
+
+  let forecastHTML = `<div class="row menu">`;
   days.forEach(function(day){
-    forecastHTML = forecastHTML +
+    forecastHTML = 
+      forecastHTML +
       `
           <div class="col-3">
             <p>

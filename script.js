@@ -1,17 +1,19 @@
-function showForecast(){
+function showForecast(response){
+  let forecast = response.data.daily;
+
   let showForecastMenu = document.querySelector("#forecast");
 
-  let days = ["Thu", "fri", "sat"];
+  
 
   let forecastHTML = `<div class="row menu">`;
-  days.forEach(function(day){
-    forecastHTML = 
+  forecast.forEach(function(forecastDay){
+    forecastHTML =
       forecastHTML +
       `
           <div class="col-3">
             <p>
               <strong>
-                ${day}
+                ${forecastDay.dt}
               </strong>
               <br />
               21 march
@@ -19,7 +21,7 @@ function showForecast(){
           </div>
           <div class="col-3" id="">
             <img 
-            src="https//ssl.gstatic.com/onebox/weather/64/sunny.png" 
+            src="https//openwethermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
             alt="light rain"   
             />
           </div>
@@ -27,10 +29,10 @@ function showForecast(){
             Wind
           </div>
           <div class="col-1">
-            1°
+            ${forecastDay.temp.min}°
           </div>
           <div class="col-1">
-            5°
+            ${forecastDay.temp.max}°
           </div>
           <div class="col-1"></div>
           <div class="col-1">
@@ -42,7 +44,12 @@ function showForecast(){
   showForecastMenu.innerHTML = forecastHTML;
 }
 
-
+function getForecast(coordinates){
+  console.log(coordinates);  
+  let apiKey = "7c42ee22976f9e22c8a745edb621c2d1";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
+}
 
 function showWeather(response) {
   let h1 = document.querySelector("h1");
@@ -64,10 +71,12 @@ function showWeather(response) {
     "src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   wind.innerHTML = `${windSpeed} km/h`;
   showTemperature.innerHTML = `${temperature}`;
+
+  getForecast(response.data.coord);
 }
 
 function getCity(city) {
-  let apiKey = "ad85da160c6f3ba80a4c59c524b772ee";
+  let apiKey = "7c42ee22976f9e22c8a745edb621c2d1";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeather);
 }
@@ -79,7 +88,7 @@ function search(event) {
 }
 
 function getPosition(position) {
-  let apiKey = "ad85da160c6f3ba80a4c59c524b772ee";
+  let apiKey = "7c42ee22976f9e22c8a745edb621c2d1";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
@@ -155,5 +164,4 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showTempCelsius);
 
 getCity("Gothenburg");
-showForecast();
 

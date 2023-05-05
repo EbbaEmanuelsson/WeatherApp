@@ -1,4 +1,5 @@
 function showForecast(response){
+  console.log(response.data.daily);
   let forecast = response.data.daily;
 
   let showForecastMenu = document.querySelector("#forecast");
@@ -21,12 +22,12 @@ function showForecast(response){
           </div>
           <div class="col-3" id="">
             <img 
-            src="https//openwethermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
+            src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
             alt="light rain"   
             />
           </div>
           <div class="col-2">
-            Wind
+            ${forecastDay.weather[0].wind_speed}
           </div>
           <div class="col-1">
             ${forecastDay.temp.min}°
@@ -44,9 +45,8 @@ function showForecast(response){
   showForecastMenu.innerHTML = forecastHTML;
 }
 
-function getForecast(coordinates){
-  console.log(coordinates);  
-  let apiKey = "7c42ee22976f9e22c8a745edb621c2d1";
+function getForecast(coordinates){  
+  let apiKey = "25fad9f7e87157d33dde0f82ab269ee8";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
 }
@@ -76,7 +76,7 @@ function showWeather(response) {
 }
 
 function getCity(city) {
-  let apiKey = "7c42ee22976f9e22c8a745edb621c2d1";
+  let apiKey = "25fad9f7e87157d33dde0f82ab269ee8";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeather);
 }

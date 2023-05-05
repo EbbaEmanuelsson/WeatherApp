@@ -7,18 +7,13 @@ function showForecast(response){
   
 
   let forecastHTML = `<div class="row menu">`;
-  forecast.forEach(function(forecastDay){
+  forecast.forEach(function(forecastDay, index){
+    if(index < 6){
     forecastHTML =
       forecastHTML +
       `
           <div class="col-3">
-            <p>
-              <strong>
-                ${forecastDay.dt}
-              </strong>
-              <br />
-              21 march
-            </p>
+             ${convertDay(forecastDay.dt)}
           </div>
           <div class="col-3" id="">
             <img 
@@ -27,18 +22,19 @@ function showForecast(response){
             />
           </div>
           <div class="col-2">
-            ${forecastDay.weather[0].wind_speed}
+          ---
           </div>
           <div class="col-1">
-            ${forecastDay.temp.min}°
+           ${Math.round(forecastDay.temp.max)}°
           </div>
           <div class="col-1">
-            ${forecastDay.temp.max}°
+            ${Math.round(forecastDay.temp.min)}°
           </div>
           <div class="col-1"></div>
           <div class="col-1">
             <button type="button" class="btn btn-light">»</button>
           </div>`;
+    }
   });
   
   forecastHTML = forecastHTML + `</div>`;
@@ -51,7 +47,25 @@ function getForecast(coordinates){
   axios.get(apiUrl).then(showForecast);
 }
 
+function convertDay(timestamp){
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+
+}
+
 function showWeather(response) {
+  console.log(response.data)
   let h1 = document.querySelector("h1");
   let city = response.data.name;
   let temperature = Math.round(response.data.main.temp);
@@ -70,7 +84,7 @@ function showWeather(response) {
   showIcon.setAttribute(
     "src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   wind.innerHTML = `${windSpeed} km/h`;
-  showTemperature.innerHTML = `${temperature}`;
+  showTemperature.innerHTML = `${temperature}°`;
 
   getForecast(response.data.coord);
 }

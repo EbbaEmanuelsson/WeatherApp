@@ -1,23 +1,22 @@
 function showForecast(response){
-  console.log(response.data.daily);
   let forecast = response.data.daily;
 
   let showForecastMenu = document.querySelector("#forecast");
 
-  
-
-  let forecastHTML = `<div class="row menu">`;
+  let forecastHTML = `<div class="row">`;
   forecast.forEach(function(forecastDay, index){
     if(index < 6){
     forecastHTML =
       forecastHTML +
-      `
+      `<div class="d-flex menu">
           <div class="col-3">
              ${convertDay(forecastDay.dt)}
           </div>
           <div class="col-3" id="">
             <img 
-            src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
+            src="https://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" 
             alt="light rain"   
             />
           </div>
@@ -33,6 +32,7 @@ function showForecast(response){
           <div class="col-1"></div>
           <div class="col-1">
             <button type="button" class="btn btn-light">»</button>
+            </div>
           </div>`;
     }
   });
@@ -61,11 +61,9 @@ function convertDay(timestamp){
   ];
 
   return days[day];
-
 }
 
 function showWeather(response) {
-  console.log(response.data)
   let h1 = document.querySelector("h1");
   let city = response.data.name;
   let temperature = Math.round(response.data.main.temp);
@@ -84,7 +82,7 @@ function showWeather(response) {
   showIcon.setAttribute(
     "src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   wind.innerHTML = `${windSpeed} km/h`;
-  showTemperature.innerHTML = `${temperature}°`;
+  showTemperature.innerHTML = `${temperature}°C`;
 
   getForecast(response.data.coord);
 }
@@ -113,25 +111,6 @@ function locationHere(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getPosition);
 }
-
-function showTempFahrenheit(event){
-  event.preventDefault();
-  let showTemperature = document.querySelector("#temperature");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-  showTemperature.innerHTML = Math.round(fahrenheitTemp);
-}
-
-function showTempCelsius(event){
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let showTemperature = document.querySelector("#temperature");
-  showTemperature.innerHTML = Math.round(celsiusTemp);
-}
-
-
 
 let now = new Date();
 
@@ -162,20 +141,11 @@ let day = days[now.getDay()];
 showDay.innerHTML = `${day}`;
 showTime.innerHTML = `${hours}:${minutes}`;
 
-let celsiusTemp = null;
-
 let button = document.querySelector("button");
 button.addEventListener("click", locationHere);
 
-
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
-
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", showTempFahrenheit);
-
-let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", showTempCelsius);
 
 getCity("Gothenburg");
 

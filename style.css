@@ -50,15 +50,9 @@
   position: relative;
 }
 
-.active {
-  color: black;
-  cursor: default;
-  text-decoration: none;
-}
 
-.active:hover{
-  text-decoration: none;
-}
+
+
 
 body {
   background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/080/156/original/h%C3%A4rligtv%C3%A4der.jpg?1683066415);

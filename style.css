@@ -4,11 +4,12 @@
 
 .menu {
   line-height: 6;
+  border: 2px solid transparent;
 }
 
 .menu:hover {
   margin: 0 auto;
-  border-style: solid;
+  border: 2px solid black;
   border-radius: 10px;
 }
 
